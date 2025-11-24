@@ -3,6 +3,7 @@ import type { Plant, User } from "./types";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import Banner from "./components/Banner.tsx";
+import PeopleDropdown from "./components/PeopleDropdown";
 import PlantList from "./components/PlantList";
 import PlantCard from "./components/PlantCard";
 import PlantForm from "./components/PlantForm";
@@ -11,7 +12,7 @@ type Props = { initialPlants: Plant[] };
 
 export default function App({ initialPlants }: Props) {
   const [plants, setPlants] = useState<Plant[]>(initialPlants);
-  const [selectedId, setSelectedId] = useState<number | null>(initialPlants[0].id);
+  //const [selectedId, setSelectedId] = useState<number | null>(initialPlants[0].id);
   const [selectedPlant, setSelectedPlant] = useState<Plant | null>(initialPlants[0] ?? null);
   const [searchText, setSearchText] = useState("");
   const [difficultyFilter, setDifficultyFilter] = useState<"All" | Plant["difficulty"]>("All");
@@ -61,7 +62,7 @@ export default function App({ initialPlants }: Props) {
             <div className="mb-2">
               <input
                 className="form-control"
-                placeholder="Search plants (UI-only)"
+                placeholder="Search plants"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
@@ -108,7 +109,7 @@ export default function App({ initialPlants }: Props) {
                 setSelectedPlant(null);
               }}
             >
-              Reset Selection (UI-only)
+              Reset Selection
             </button>
           </div>
 
@@ -147,7 +148,6 @@ export default function App({ initialPlants }: Props) {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
